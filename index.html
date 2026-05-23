@@ -285,6 +285,18 @@ color: #fff !important;
         }
 
 
+        .usagetitle {
+color: #000 !important;
+text-transform: none !important;
+        }
+
+.flaaz {
+background: #000 !important;
+border: none !important;
+font-size: 22px !important;
+        }
+
+
         .gogreen  {
     background: #bcff29 !important
         }
@@ -382,12 +394,15 @@ color: #fff !important;
         }
 
         #dynamic-var {
-            color: var(--vert-electrique);
-            border-right: 2px solid var(--vert-electrique); /* Curseur du typing */
-            padding-right: 5px;
-            display: inline-block;
-            white-space: nowrap;
-            animation: blinkCursor 0.75s step-end infinite;
+    color: #000;
+    border-right: none;
+    background: #bcff2a;
+    height: 88px;
+    text-transform: none !important;
+    display: inline-block;
+    padding: 6px 15px;
+    border-radius: 10px;
+    white-space: nowrap;
         }
 
         @keyframes blinkCursor {
@@ -575,10 +590,10 @@ color: #fff !important;
         <img src="https://civilprom.s3.eu-north-1.amazonaws.com/DUMMY.svg" class="cable-right" alt="Cable droit">
 
         <h2>
-            <span data-translate-key="usage_prefix">Idéal pour un usage en</span> <br>
+            <span class="usagetitle" data-translate-key="usage_prefix">Idéal pour un usage en</span> <br>
             <span id="dynamic-var"></span>
         </h2>
-        <a href="/dummy" class="btn btn-full-green" data-translate-key="usage_btn">Déployer chez vous</a>
+        <a href="/dummy" class="btn btn-full-green flaaz" data-translate-key="usage_btn">Déployer chez vous</a>
     </section>
 
     <!-- SECTION 3 : TERMINAUX & OFFRES -->
