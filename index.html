@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOZEROSTATION</title>
+    <style>
+        /* --- CONFIGURATION DES POLICES & COULEURS --- */
+        @font-face {
+            font-family: 'Civilprom';
+            src: url('https://civilprom.s3.eu-north-1.amazonaws.com/Civilprom1.otf') format('opentype');
+            font-weight: 100;
+            font-style: normal;
+        }
+
+        :root {
+            --vert-electrique: #a8f277;
+            --violet-fonce: #1a0a2f;
+            --noir: #000000;
+            --blanc: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Civilprom', sans-serif;
+            font-weight: 100;
+            background-color: var(--violet-fonce);
+            color: var(--blanc);
+            overflow-x: hidden;
+            line-height: 1.5;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* --- STYLES COMMUNS DES BOUTONS --- */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 24px;
+            font-family: 'Civilprom', sans-serif;
+            font-weight: 100;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+
+        .btn-full-dark {
+            background-color: var(--violet-fonce);
+            color: var(--vert-electrique);
+            border: 2px solid var(--violet-fonce);
+        }
+        .btn-full-dark:hover {
+            background-color: transparent;
+            color: var(--violet-fonce);
+        }
+
+        .btn-outline-dark {
+            background-color: transparent;
+            color: var(--violet-fonce);
+            border: 2px solid var(--violet-fonce);
+        }
+        .btn-outline-dark:hover {
+            background-color: var(--violet-fonce);
+            color: var(--vert-electrique);
+        }
+
+        .btn-full-green {
+            background-color: var(--vert-electrique);
+            color: var(--violet-fonce);
+            border: 2px solid var(--vert-electrique);
+        }
+        .btn-full-green:hover {
+            background-color: transparent;
+            color: var(--vert-electrique);
+        }
+
+        /* --- SECTION HERO --- */
+        .hero {
+            display: flex;
+            height: 100vh;
+            max-height: 650px;
+            width: 100%;
+        }
+
+        .hero-left {
+            width: 50%;
+            background-color: var(--vert-electrique);
+            color: var(--violet-fonce);
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            position: relative;
+        }
+
+        .lang-selector {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        .lang-select {
+            background: transparent;
+            border: 2px solid var(--violet-fonce);
+            color: var(--violet-fonce);
+            padding: 8px 16px;
+            font-family: 'Civilprom', sans-serif;
+            font-weight: 100;
+            font-size: 0.9rem;
+            outline: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .hero-logo-wrapper {
+            margin-top: auto;
+            margin-bottom: auto;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            width: 100%;
+            justify-content: space-between;
+        }
+
+        .hero-buttons .btn {
+            flex: 1; /* Permet aux deux boutons de prendre 100% de la largeur totale équitablement */
+        }
+
+        .hero-right {
+            width: 50%;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: flex-start;
+            background-color: var(--violet-fonce);
+        }
+
+        .hero-right h1 {
+            font-size: 3.2rem;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .hero-illustration {
+            width: 100%;
+            max-width: 450px;
+            align-self: center;
+            margin-top: auto;
+        }
+
+        /* --- SECTION IMPULSION ÉLECTRIQUE (WAVE DE GAUCHE A DROITE) --- */
+        .impulse-section {
+            width: 100%;
+            padding: 60px 20px;
+            text-align: center;
+            cursor: pointer;
+            display: block;
+            background: linear-gradient(90deg, #16032b 0%, #16032b 35%, #a8f277 50%, #16032b 65%, #16032b 100%);
+            background-size: 400% 100%;
+            animation: electricWave 3s infinite linear;
+        }
+
+        @keyframes electricWave {
+            0% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .impulse-section h2 {
+            font-size: 2.5rem;
+            color: var(--blanc);
+            text-transform: uppercase;
+            text-shadow: 0 0 10px rgba(0,0,0,0.5);
+        }
+
+        /* --- STRUCTURE SECTIONS STANDARDS --- */
+        .section-container {
+            width: 98%;
+            margin: 40px auto;
+            background-color: var(--noir);
+            padding: 60px 40px;
+            border-radius: 8px;
+        }
+
+        .section-intro {
+            max-width: 800px;
+            text-align: left;
+            margin-bottom: 50px;
+        }
+
+        .section-intro h2 {
+            font-size: 3rem;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            color: var(--vert-electrique);
+        }
+
+        .section-intro p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        /* GRILLES RESPONSIVES */
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .card-item {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .card-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
+            margin-bottom: 20px;
+            background: rgba(255,255,255,0.02);
+            border-radius: 4px;
+        }
+
+        .card-item h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            color: var(--vert-electrique);
+        }
+
+        .card-item p {
+            font-size: 1rem;
+            opacity: 0.8;
+            margin-bottom: 20px;
+        }
+
+        .price-tag {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .sub-price {
+            font-size: 0.9rem;
+            opacity: 0.6;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+        }
+
+        .card-item .btn {
+            margin-top: auto;
+        }
+
+        /* --- SECTION CAS D'USAGES --- */
+        .usage-section {
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 100px 140px;
+            min-height: 400px;
+        }
+
+        .cable-left {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 90%;
+            max-width: 120px;
+            object-fit: contain;
+        }
+
+        .cable-right {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 90%;
+            max-width: 120px;
+            object-fit: contain;
+        }
+
+        .usage-section h2 {
+            font-size: 3.5rem;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+            line-height: 1.3;
+        }
+
+        #dynamic-var {
+            color: var(--vert-electrique);
+            border-right: 2px solid var(--vert-electrique); /* Curseur du typing */
+            padding-right: 5px;
+            display: inline-block;
+            white-space: nowrap;
+            animation: blinkCursor 0.75s step-end infinite;
+        }
+
+        @keyframes blinkCursor {
+            from, to { border-color: transparent }
+            50% { border-color: var(--vert-electrique); }
+        }
+
+        /* --- SECTION PROXIMITÉ --- */
+        .role-tag {
+            font-size: 1rem;
+            color: var(--vert-electrique);
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .email-link {
+            color: var(--blanc);
+            border-bottom: 1px dashed var(--vert-electrique);
+            padding-bottom: 2px;
+            font-size: 1rem;
+            margin-top: 10px;
+        }
+        .email-link:hover {
+            color: var(--vert-electrique);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--noir);
+            padding: 60px 40px 30px 40px;
+            border-top: 1px solid rgba(168, 242, 119, 0.1);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            max-width: 200px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            font-size: 1rem;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--vert-electrique);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            font-size: 0.8rem;
+            opacity: 0.4;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding-top: 20px;
+        }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 1024px) {
+            .hero {
+                height: auto;
+                max-height: none;
+                flex-direction: column;
+            }
+            .hero-left, .hero-right {
+                width: 100%;
+                padding: 60px 20px;
+            }
+            .hero-left {
+                padding-top: 80px;
+                min-height: 450px;
+            }
+            .usage-section {
+                padding: 80px 40px;
+            }
+            .cable-left, .cable-right {
+                display: none; /* Câbles masqués sur mobile pour prioriser le texte */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-right h1 {
+                font-size: 2.5rem;
+            }
+            .section-intro h2, .usage-section h2 {
+                font-size: 2.2rem;
+            }
+            .hero-buttons {
+                flex-direction: column;
+            }
+            .hero-buttons .btn {
+                width: 100%;
+            }
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- SECTION HERO -->
+    <section class="hero">
+        <div class="hero-left">
+            <div class="lang-selector">
+                <select class="lang-select" id="langSelect" onchange="changeLanguage(this.value)">
+                    <option value="fr-FR">Français FR</option>
+                    <option value="fr-BE">Français BE</option>
+                    <option value="en">English</option>
+                    <option value="es">Español</option>
+                    <option value="pt">Portuguese</option>
+                </select>
+            </div>
+            
+            <div class="hero-logo-wrapper">
+                <img src="https://civilprom.s3.eu-north-1.amazonaws.com/NOZEROSTATION.svg" alt="Logo NOZEROSTATION">
+            </div>
+
+            <div class="hero-buttons">
+                <a href="/contact" class="btn btn-outline-dark" data-translate-key="hero_btn_left">Contact</a>
+                <a href="/dummy" class="btn btn-full-dark" data-translate-key="hero_btn_right">Découvrir</a>
+            </div>
+        </div>
+
+        <div class="hero-right">
+            <h1 data-translate-key="hero_title">L'énergie du futur, branchée dès aujourd'hui.</h1>
+            <div class="hero-illustration">
+                <img src="https://civilprom.s3.eu-north-1.amazonaws.com/DUMMY.svg" alt="Illustration Hero">
+            </div>
+        </div>
+    </section>
+
+    <!-- BANDEAU IMPULSION ÉLECTRIQUE -->
+    <a href="/dummy" class="impulse-section">
+        <h2 data-translate-key="impulse_text">⚡ Rejoindre la révolution électrique en un clic ⚡</h2>
+    </a>
+
+    <!-- SECTION 1 : HOW IT WORKS -->
+    <section class="section-container">
+        <div class="section-intro">
+            <h2 data-translate-key="s1_title">Comment ça marche</h2>
+            <p data-translate-key="s1_desc">Une installation simple et un écosystème pensé pour la performance de votre établissement au quotidien.</p>
+            <a href="/dummy" class="btn btn-full-green" data-translate-key="s1_btn">En savoir plus</a>
+        </div>
+
+        <div class="grid-4">
+            <div class="card-item">
+                <img src="https://civilprom.s3.eu-north-1.amazonaws.com/DUMMY.svg" alt="Étape 1">
+                <h3 data-translate-key="step1_title">Étape 1</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sedi do eiusmod tempor incididunt ut labore.</p>
+            </div>
+            <div class="card-item">
+                <img src="https://civilprom.s3.eu-north-1.amazonaws.com/DUMMY.svg" alt="Étape 2">
+                <h3 data-translate-key="step2_title">Étape 2</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sedi do eiusmod tempor incididunt ut labore.</p>
+            </div>
+            <div class="card-item">
+                <img src="https://civilprom.s3.eu-north-1.amazonaws.com/DUMMY.svg" alt="Étape 3">
+                <h3 data-translate-key="step3_title">Étape 3</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sedi do eiusmod tempor incididunt ut labore.</p>
+            </div>
+            <div class="card-item">
+                <img src="https://civilprom.s3.eu-north-1.amazonaws.com/DUMMY.svg" alt="Étape 4">
+                <h3 data-translate-key="step4_title">Étape 4</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sedi do eiusmod tempor incididunt ut labore.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2 : CAS D'USAGES -->
+    <section class="section-container usage-section">
+        <img src="https://civilprom.s3.eu-north-1.amazonaws.com/DUMMY.svg" class="cable-left" alt="Cable gauche">
+        <img src="https://civilprom.s3.eu-north-1.amazonaws.com/DUMMY.svg" class="cable-right" alt="Cable droit">
+
+        <h2>
+            <span data-translate-key="usage_prefix">Idéal pour un usage en</span> <br>
+            <span id="dynamic-var"></span>
+        </h2>
+        <a href="/dummy" class="btn btn-full-green" data-translate-key="usage_btn">Déployer chez vous</a>
+    </section>
+
+    <!-- SECTION 3 : TERMINAUX & OFFRES -->
+    <section class="section-container">
+        <div class="section-intro">
+            <h2 data-translate-key="offers_title">Terminaux & Offres</h2>
+        </div>
+        <div class="grid-3">
+            <div class="card-item">
+                <img src="https://civilprom.s3.eu-north-1.amazonaws.com/DUMMY.svg" alt="Terminal 1">
+                <h3 data-translate-key="off1_title">Station Compact</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ac nisl eget dolor.</p>
+                <div class="price-tag">299€</div>
+                <div class="sub-price" data-translate-key="sub_price">+70€/mois d'abonnement</div>
+                <a href="/dummy" class="btn btn-full-green" data-translate-key="global_discover">Acheter</a>
+            </div>
+            <div class="card-item">
+                <img src="https://civilprom.s3.eu-north-1.amazonaws.com/DUMMY.svg" alt="Terminal 2">
+                <h3 data-translate-key="off2_title">Station Totem</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ac nisl eget dolor.</p>
+                <div class="price-tag">499€</div>
+                <div class="sub-price" data-translate-key="sub_price">+70€/mois d'abonnement</div>
+                <a href="/dummy" class="btn btn-full-green" data-translate-key="global_discover">Acheter</a>
+            </div>
+            <div class="card-item">
+                <img src="https://civilprom.s3.eu-north-1.amazonaws.com/DUMMY.svg" alt="Terminal 3">
+                <h3 data-translate-key="off3_title">Station Custom</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ac nisl eget dolor.</p>
+                <div class="price-tag">799€</div>
+                <div class="sub-price" data-translate-key="sub_price">+70€/mois d'abonnement</div>
+                <a href="/dummy" class="btn btn-full-green" data-translate-key="global_discover">Acheter</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4 : AVANTAGES ET OBJECTIFS -->
+    <section class="section-container">
+        <div class="section-intro">
+            <h2 data-translate-key="adv_title">Avantages & Objectifs</h2>
+        </div>
+        <div class="grid-3">
+            <div class="card-item">
+                <img src="https://civilprom.s3.eu-north-1.amazonaws.com/DUMMY.svg" alt="Avantage 1">
+                <h3 data-translate-key="adv1_title">Fiabilité 100%</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ac nisl eget dolor.</p>
+                <a href="/dummy" class="btn btn-full-green" data-translate-key="global_discover">Voir plus</a>
+            </div>
+            <div class="card-item">
+                <img src="https://civilprom.s3.eu-north-1.amazonaws.com/DUMMY.svg" alt="Avantage 2">
+                <h3 data-translate-key="adv2_title">Engagement Client</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ac nisl eget dolor.</p>
+                <a href="/dummy" class="btn btn-full-green" data-translate-key="global_discover">Voir plus</a>
+            </div>
+            <div class="card-item">
+                <img src="https://civilprom.s3.eu-north-1.amazonaws.com/DUMMY.svg" alt="Avantage 3">
+                <h3 data-translate-key="adv3_title">Revenus Boostés</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ac nisl eget dolor.</p>
+                <a href="/dummy" class="btn btn-full-green" data-translate-key="global_discover">Voir plus</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5 : ON A QUELQUE CHOSE EN PLUS -->
+    <section class="section-container">
+        <div class="section-intro">
+            <h2 data-translate-key="plus_title">On a quelque chose en plus</h2>
+        </div>
+        <div class="grid-3">
+            <div class="card-item">
+                <img src="https://civilprom.s3.eu-north-1.amazonaws.com/DUMMY.svg" alt="Plus 1">
+                <h3 data-translate-key="plus1_title">Technologie Green</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ac nisl eget dolor.</p>
+                <a href="/dummy" class="btn btn-full-green" data-translate-key="global_discover">Découvrir</a>
+            </div>
+            <div class="card-item">
+                <img src="https://civilprom.s3.eu-north-1.amazonaws.com/DUMMY.svg" alt="Plus 2">
+                <h3 data-translate-key="plus2_title">Support 24/7</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ac nisl eget dolor.</p>
+                <a href="/dummy" class="btn btn-full-green" data-translate-key="global_discover">Découvrir</a>
+            </div>
+            <div class="card-item">
+                <img src="https://civilprom.s3.eu-north-1.amazonaws.com/DUMMY.svg" alt="Plus 3">
+                <h3 data-translate-key="plus3_title">Hardware Premium</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ac nisl eget dolor.</p>
+                <a href="/dummy" class="btn btn-full-green" data-translate-key="global_discover">Découvrir</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 6 : PROXIMITÉ ET DISPONIBILITÉ -->
+    <section class="section-container">
+        <div class="section-intro">
+            <h2 data-translate-key="prox_title">Proximité & Disponibilité</h2>
+        </div>
+        <div class="grid-3">
+            <div class="card-item">
+                <img src="https://civilprom.s3.eu-north-1.amazonaws.com/DUMMY.svg" alt="Team 1">
+                <h3>Jean Dupont</h3>
+                <div class="role-tag" data-translate-key="role_dir">Directeur Régional</div>
+                <a href="mailto:j.dupont@nozerostation.com" class="email-link">j.dupont@nozerostation.com</a>
+            </div>
+            <div class="card-item">
+                <img src="https://civilprom.s3.eu-north-1.amazonaws.com/DUMMY.svg" alt="Team 2">
+                <h3>Marie Court</h3>
+                <div class="role-tag" data-translate-key="role_tech">Support Technique</div>
+                <a href="mailto:m.court@nozerostation.com" class="email-link">m.court@nozerostation.com</a>
+            </div>
+            <div class="card-item">
+                <img src="https://civilprom.s3.eu-north-1.amazonaws.com/DUMMY.svg" alt="Team 3">
+                <h3>Lucas Silva</h3>
+                <div class="role-tag" data-translate-key="role_sales">Responsable Comptes</div>
+                <a href="mailto:l.silva@nozerostation.com" class="email-link">l.silva@nozerostation.com</a>
+            </div>
+            <div class="card-item">
+                <img src="https://civilprom.s3.eu-north-1.amazonaws.com/DUMMY.svg" alt="Team 4">
+                <h3>Sophie Martin</h3>
+                <div class="role-tag" data-translate-key="role_ops">Chef des Opérations</div>
+                <a href="mailto:s.martin@nozerostation.com" class="email-link">s.martin@nozerostation.com</a>
+            </div>
+            <div class="card-item">
+                <img src="https://civilprom.s3.eu-north-1.amazonaws.com/DUMMY.svg" alt="Team 5">
+                <h3>Thomas Roux</h3>
+                <div class="role-tag" data-translate-key="role_log">Logistique</div>
+                <a href="mailto:t.roux@nozerostation.com" class="email-link">t.roux@nozerostation.com</a>
+            </div>
+            <div class="card-item">
+                <img src="https://civilprom.s3.eu-north-1.amazonaws.com/DUMMY.svg" alt="Team 6">
+                <h3>Emma Bernard</h3>
+                <div class="role-tag" data-translate-key="role_mkt">Relations Partenaires</div>
+                <a href="mailto:e.bernard@nozerostation.com" class="email-link">e.bernard@nozerostation.com</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <img src="https://civilprom.s3.eu-north-1.amazonaws.com/NOZEROSTATIONWHITE.svg" class="footer-logo" alt="NOZEROSTATION Logo Blanc">
+            <div class="footer-links">
+                <a href="#" data-translate-key="foot_terms">Conditions Générales</a>
+                <a href="#" data-translate-key="foot_privacy">Confidentialité</a>
+                <a href="#" data-translate-key="foot_security">Sécurité</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 NOZEROSTATION. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- INTERACTIVITÉ, TRADUCTIONS ET TYPING EFFECT -->
+    <script>
+        /* --- 1. CONFIGURATION ET TRADUCTIONS CONTENANT LES MOTS CLÉS DES CAS D'USAGES --- */
+        const translations = {
+            "fr-FR": {
+                "hero_btn_left": "Contact", "hero_btn_right": "Découvrir",
+                "hero_title": "L'énergie du futur, branchée dès aujourd'hui.",
+                "impulse_text": "⚡ Rejoindre la révolution électrique en un clic ⚡",
+                "s1_title": "Comment ça marche", "s1_desc": "Une installation simple et un écosystème pensé pour la performance de votre établissement au quotidien.", "s1_btn": "En savoir plus",
+                "step1_title": "Étape 1", "step2_title": "Étape 2", "step3_title": "Étape 3", "step4_title": "Étape 4",
+                "usage_prefix": "Idéal pour un usage en", "usage_btn": "Déployer chez vous",
+                "offers_title": "Terminaux & Offres", "off1_title": "Station Compact", "off2_title": "Station Totem", "off3_title": "Station Custom", "sub_price": "+70€/mois d'abonnement",
+                "adv_title": "Avantages & Objectifs", "adv1_title": "Fiabilité 100%", "adv2_title": "Engagement Client", "adv3_title": "Revenus Boostés",
+                "plus_title": "On a quelque chose en plus", "plus1_title": "Technologie Green", "plus2_title": "Support 24/7", "plus3_title": "Hardware Premium",
+                "prox_title": "Proximité & Disponibilité", "role_dir": "Directeur Régional", "role_tech": "Support Technique", "role_sales": "Responsable Comptes", "role_ops": "Chef des Opérations", "role_log": "Logistique", "role_mkt": "Relations Partenaires",
+                "foot_terms": "Conditions Générales", "foot_privacy": "Confidentialité", "foot_security": "Sécurité", "global_discover": "Découvrir",
+                "cases": ["discothèque", "hôtel", "stade", "patinoire", "restaurant", "Bar", "Concept Store", "Café", "Événement", "Festival", "Commerce GS", "Centre Commercial", "Complexes Sportifs", "Aéroport", "Hôpital", "Musée", "Bowling", "Parc à thème"]
+            },
+            "fr-BE": {
+                "hero_btn_left": "Contact", "hero_btn_right": "Découvrir",
+                "hero_title": "L'énergie du futur, branchée dès aujourd'hui, une fois !",
+                "impulse_text": "⚡ Rejoindre la révolution électrique en un clic ⚡",
+                "s1_title": "Comment ça marche", "s1_desc": "Une installation simple et un écosystème pensé pour la performance de votre établissement au quotidien.", "s1_btn": "En savoir plus",
+                "step1_title": "Étape 1", "step2_title": "Étape 2", "step3_title": "Étape 3", "step4_title": "Étape 4",
+                "usage_prefix": "Idéal pour un usage en", "usage_btn": "Déployer chez vous",
+                "offers_title": "Terminaux & Offres", "off1_title": "Station Compact", "off2_title": "Station Totem", "off3_title": "Station Custom", "sub_price": "+70€/mois d'abonnement",
+                "adv_title": "Avantages & Objectifs", "adv1_title": "Fiabilité 100%", "adv2_title": "Engagement Client", "adv3_title": "Revenus Boostés",
+                "plus_title": "On a quelque chose en plus", "plus1_title": "Technologie Green", "plus2_title": "Support 24/7", "plus3_title": "Hardware Premium",
+                "prox_title": "Proximité & Disponibilité", "role_dir": "Directeur Régional", "role_tech": "Support Technique", "role_sales": "Responsable Comptes", "role_ops": "Chef des Opérations", "role_log": "Logistique", "role_mkt": "Relations Partenaires",
+                "foot_terms": "Conditions Générales", "foot_privacy": "Confidentialité", "foot_security": "Sécurité", "global_discover": "Découvrir",
+                "cases": ["discothèque", "hôtel", "stade", "patinoire", "restaurant", "Bar", "Concept Store", "Café", "Événement", "Festival", "Commerce GS", "Centre Commercial", "Complexes Sportifs", "Aéroport", "Hôpital", "Musée", "Bowling", "Parc à thème"]
+            },
+            "en": {
+                "hero_btn_left": "Contact", "hero_btn_right": "Discover",
+                "hero_title": "The energy of the future, wired today.",
+                "impulse_text": "⚡ Join the electric revolution in one click ⚡",
+                "s1_title": "How it works", "s1_desc": "A simple setup and an ecosystem built for your business's daily performance.", "s1_btn": "Learn more",
+                "step1_title": "Step 1", "step2_title": "Step 2", "step3_title": "Step 3", "step4_title": "Step 4",
+                "usage_prefix": "Ideal for use in", "usage_btn": "Deploy at your venue",
+                "offers_title": "Terminals & Offers", "off1_title": "Compact Station", "off2_title": "Totem Station", "off3_title": "Custom Station", "sub_price": "+70€/month subscription",
+                "adv_title": "Benefits & Goals", "adv1_title": "100% Reliability", "adv2_title": "Customer Engagement", "adv3_title": "Boosted Revenue",
+                "plus_title": "We have something extra", "plus1_title": "Green Technology", "plus2_title": "24/7 Support", "plus3_title": "Premium Hardware",
+                "prox_title": "Proximity & Availability", "role_dir": "Regional Director", "role_tech": "Technical Support", "role_sales": "Account Manager", "role_ops": "Head of Operations", "role_log": "Logistics", "role_mkt": "Partner Relations",
+                "foot_terms": "Terms & Conditions", "foot_privacy": "Privacy Policy", "foot_security": "Security", "global_discover": "Discover",
+                "cases": ["nightclub", "hotel", "stade", "ice rink", "restaurant", "Bar", "Concept Store", "Café", "Event", "Festival", "Wholesale store", "Shopping mall", "Sports Center", "Airport", "Hospital", "Museum", "Bowling alley", "Theme park"]
+            },
+            "es": {
+                "hero_btn_left": "Contacto", "hero_btn_right": "Descubrir",
+                "hero_title": "La energía del futuro, conectada hoy.",
+                "impulse_text": "⚡ Únete a la revolución eléctrica en un clic ⚡",
+                "s1_title": "Cómo funciona", "s1_desc": "Una instalación sencilla y un ecosistema diseñado para el rendimiento diario de tu negocio.", "s1_btn": "Saber más",
+                "step1_title": "Paso 1", "step2_title": "Paso 2", "step3_title": "Paso 3", "step4_title": "Paso 4",
+                "usage_prefix": "Ideal para uso en", "usage_btn": "Desplegar en tu local",
+                "offers_title": "Terminales y Ofertas", "off1_title": "Estación Compacta", "off2_title": "Estación Tótem", "off3_title": "Estación Custom", "sub_price": "+70€/mes de suscripción",
+                "adv_title": "Ventajas y Objetivos", "adv1_title": "100% Fiabilidad", "adv2_title": "Compromiso Cliente", "adv3_title": "Ingresos Potenciados",
+                "plus_title": "Tenemos algo más", "plus1_title": "Tecnología Verde", "plus2_title": "Soporte 24/7", "plus3_title": "Hardware Premium",
+                "prox_title": "Proximidad y Disponibilidad", "role_dir": "Director Regional", "role_tech": "Soporte Técnico", "role_sales": "Gestor de Cuentas", "role_ops": "Jefe de Operaciones", "role_log": "Logística", "role_mkt": "Relaciones de Socios",
+                "foot_terms": "Términos y Condiciones", "foot_privacy": "Privacidad", "foot_security": "Seguridad", "global_discover": "Descubrir",
+                "cases": ["discoteca", "hotel", "estadio", "pista de hielo", "restaurante", "Bar", "Concept Store", "Café", "Evento", "Festival", "Gran almacén", "Centro comercial", "Complejo deportivo", "Aeropuerto", "Hospital", "Museo", "Bolera", "Parque temático"]
+            },
+            "pt": {
+                "hero_btn_left": "Contato", "hero_btn_right": "Descobrir",
+                "hero_title": "A energia do futuro, ligada hoje.",
+                "impulse_text": "⚡ Junte-se à revolução elétrica em um clique ⚡",
+                "s1_title": "Como funciona", "s1_desc": "Uma configuração simples e um ecossistema projetado para o desempenho diário do seu negócio.", "s1_btn": "Saber mais",
+                "step1_title": "Passo 1", "step2_title": "Passo 2", "step3_title": "Passo 3", "step4_title": "Passo 4",
+                "usage_prefix": "Ideal para uso em", "usage_btn": "Implantar no seu local",
+                "offers_title": "Terminais e Ofertas", "off1_title": "Estação Compacta", "off2_title": "Estação Totem", "off3_title": "Estação Custom", "sub_price": "+70€/mês de assinatura",
+                "adv_title": "Vantagens e Objetivos", "adv1_title": "100% Confiabilidade", "adv2_title": "Engajamento do Cliente", "adv3_title": "Receita Alavancada",
+                "plus_title": "Temos algo a mais", "plus1_title": "Tecnologia Verde", "plus2_title": "Suporte 24/7", "plus3_title": "Hardware Premium",
+                "prox_title": "Proximidade e Disponibilidade", "role_dir": "Diretor Regional", "role_tech": "Suporte Técnico", "role_sales": "Gerente de Contas", "role_ops": "Chefe de Operações", "role_log": "Logística", "role_mkt": "Relações de Parceiros",
+                "foot_terms": "Termos e Condições", "foot_privacy": "Privacidade", "foot_security": "Segurança", "global_discover": "Descobrir",
+                "cases": ["discoteca", "hotel", "estádio", "pista de gelo", "restaurante", "Bar", "Concept Store", "Café", "Evento", "Festival", "Grande loja", "Centro comercial", "Complexo esportivo", "Aeroporto", "Hospital", "Museu", "Boliche", "Parque temático"]
+            }
+        };
+
+        let currentLang = "fr-FR";
+
+        function changeLanguage(lang) {
+            currentLang = lang;
+            const elements = document.querySelectorAll('[data-translate-key]');
+            elements.forEach(element => {
+                const key = element.getAttribute('data-translate-key');
+                if (translations[lang] && translations[lang][key]) {
+                    element.innerText = translations[lang][key];
+                }
+            });
+            // Réinitialise la boucle de dactylographie instantanément lors du changement de langue
+            wordIndex = 0;
+            charIndex = 0;
+            isDeleting = false;
+            clearTimeout(typingTimeout);
+            typeEffect();
+        }
+
+        /* --- 2. LOGIQUE AVANCÉE DE L'EFFET TYPING EFFECT (TRADUIT) --- */
+        const dynamicVarSpan = document.getElementById('dynamic-var');
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typingTimeout;
+
+        function typeEffect() {
+            const currentWordsList = translations[currentLang]["cases"];
+            const currentFullWord = currentWordsList[wordIndex];
+
+            if (isDeleting) {
+                // Efface les lettres une par une
+                dynamicVarSpan.textContent = currentFullWord.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                // Écrit les lettres une par une
+                dynamicVarSpan.textContent = currentFullWord.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            // Gestion des délais de frappe
+            let typingSpeed = isDeleting ? 40 : 80; // Vitesse d'effacement plus rapide que l'écriture
+
+            if (!isDeleting && charIndex === currentFullWord.length) {
+                // Le mot est complet : pause plus longue pour la lecture avant d'effacer (2 secondes)
+                typingSpeed = 2000;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                // Passe au mot suivant
+                wordIndex = (wordIndex + 1) % currentWordsList.length;
+                typingSpeed = 400; // Pause avant de retaper le mot suivant
+            }
+
+            typingTimeout = setTimeout(typeEffect, typingSpeed);
+        }
+
+        // Lancement initial de l'effet dactylographique au chargement
+        document.addEventListener("DOMContentLoaded", () => {
+            typeEffect();
+        });
+    </script>
+</body>
+</html>
