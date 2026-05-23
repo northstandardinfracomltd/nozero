@@ -29,7 +29,7 @@
         body {
             font-family: 'Civilprom', sans-serif;
             font-weight: 100;
-            background-color: var(--violet-fonce);
+            background-color: #fff;
             color: var(--blanc);
             overflow-x: hidden;
             line-height: 1.5;
@@ -87,9 +87,10 @@ background-color: #ffffff12;
         }
 
         .btn-full-green {
-            background-color: var(--vert-electrique);
-            color: var(--violet-fonce);
-            border: 2px solid var(--vert-electrique);
+    background-color: #bcff29;
+    color: #000000;
+    border: none;
+    border-radius: 10px;
         }
         .btn-full-green:hover {
             background-color: transparent;
@@ -156,6 +157,7 @@ background-color: #ffffff12;
         .hero-right {
             width: 50%;
             padding: 40px;
+            padding-bottom: 0px !important;
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
@@ -164,10 +166,15 @@ background-color: #ffffff12;
         }
 
         .hero-right h1 {
-            font-size: 3.2rem;
-            line-height: 1.1;
-            margin-bottom: 20px;
-            text-transform: uppercase;
+    font-size: 22px;
+    line-height: 36px;
+    margin: auto;
+    cursor: default;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 0px;
+    text-transform: none;
+    margin-top: 50px;
         }
 
         .hero-illustration {
@@ -203,11 +210,12 @@ background-color: #ffffff12;
 
         /* --- STRUCTURE SECTIONS STANDARDS --- */
         .section-container {
-            width: 98%;
-            margin: 40px auto;
-            background-color: var(--noir);
-            padding: 60px 40px;
-            border-radius: 8px;
+width: 98%;
+    margin: 40px auto;
+    background-color: #f5f5f5;
+    border: none !important;
+    padding: 60px 40px;
+    border-radius: 18px;
         }
 
         .section-intro {
@@ -217,16 +225,19 @@ background-color: #ffffff12;
         }
 
         .section-intro h2 {
-            font-size: 3rem;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-            color: var(--vert-electrique);
+font-size: 42px;
+    cursor: default;
+    text-transform: none;
+    margin-bottom: 20px;
+    color: #000000;
         }
 
         .section-intro p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            opacity: 0.9;
+font-size: 22px;
+    cursor: default;
+    color: #000;
+    margin-bottom: 30px;
+    opacity: 1;
         }
 
         /* GRILLES RESPONSIVES */
@@ -239,14 +250,48 @@ background-color: #ffffff12;
         .grid-3 {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
+            gap: 25px;
         }
 
         .card-item {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
+display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background: #0163ff;
+    border-radius: 10px;
+    padding: 30px;
         }
+
+
+        .ins1de  {
+width: 100% !important; 
+border-radius: 10px !important;
+background: #000 !important; 
+color: #fff !important; 
+font-size: 22px !important; 
+text-align: center !important;
+margin: auto !important;
+padding: 10px 12px !important;
+        }
+ 
+
+
+        .gogreen  {
+    background: #bcff29 !important
+        }
+
+                .goorange  {
+    background: #f36a2f !important
+        }
+
+                .goyellow  {
+    background: #ffdc00 !important
+        }
+
+                .goblue  {
+    background: #0163ff !important
+        }
+        
 
         .card-item img {
             width: 100%;
@@ -467,13 +512,13 @@ background-color: #ffffff12;
             </div>
 
             <div class="hero-buttons">
-                <a href="/contact" class="btn btn-outline-dark" data-translate-key="hero_btn_left">Contact</a>
-                <a href="/dummy" class="btn btn-full-dark" data-translate-key="hero_btn_right">Découvrir</a>
+                <a href="/contact" class="btn btn-outline-dark" data-translate-key="hero_btn_left">Nous contacter</a>
+                <a href="/dummy" class="btn btn-full-dark" data-translate-key="hero_btn_right">Acheter une station</a>
             </div>
         </div>
 
         <div class="hero-right">
-            <h1 data-translate-key="hero_title">L'énergie du futur, branchée dès aujourd'hui.</h1>
+            <h1 data-translate-key="hero_title">Lorem ipsum dolore sitetum dolore frateum.</h1>
             <div class="hero-illustration">
                 <img src="https://civilprom.s3.eu-north-1.amazonaws.com/DUMMY.svg" alt="Illustration Hero">
             </div>
@@ -482,7 +527,7 @@ background-color: #ffffff12;
 
     <!-- BANDEAU IMPULSION ÉLECTRIQUE -->
     <a href="/dummy" class="impulse-section">
-        <h2 data-translate-key="impulse_text">⚡ Rejoindre la révolution électrique en un clic ⚡</h2>
+        <h2 data-translate-key="impulse_text">ONLY NO TO ZERO BATTERY</h2>
     </a>
 
     <!-- SECTION 1 : HOW IT WORKS -->
@@ -490,26 +535,26 @@ background-color: #ffffff12;
         <div class="section-intro">
             <h2 data-translate-key="s1_title">Comment ça marche</h2>
             <p data-translate-key="s1_desc">Une installation simple et un écosystème pensé pour la performance de votre établissement au quotidien.</p>
-            <a href="/dummy" class="btn btn-full-green" data-translate-key="s1_btn">En savoir plus</a>
         </div>
 
         <div class="grid-4">
-            <div class="card-item">
+            <div class="gogreen card-item">
                 <img src="https://civilprom.s3.eu-north-1.amazonaws.com/DUMMY.svg" alt="Étape 1">
                 <h3 data-translate-key="step1_title">Étape 1</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sedi do eiusmod tempor incididunt ut labore.</p>
+                            <a href="/dummy" class="btn ins1de" data-translate-key="s1_btn">Lorem ipsum</a>
             </div>
-            <div class="card-item">
+            <div class="goorange card-item">
                 <img src="https://civilprom.s3.eu-north-1.amazonaws.com/DUMMY.svg" alt="Étape 2">
                 <h3 data-translate-key="step2_title">Étape 2</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sedi do eiusmod tempor incididunt ut labore.</p>
             </div>
-            <div class="card-item">
+            <div class="goyellow card-item">
                 <img src="https://civilprom.s3.eu-north-1.amazonaws.com/DUMMY.svg" alt="Étape 3">
                 <h3 data-translate-key="step3_title">Étape 3</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sedi do eiusmod tempor incididunt ut labore.</p>
             </div>
-            <div class="card-item">
+            <div class="goblue card-item">
                 <img src="https://civilprom.s3.eu-north-1.amazonaws.com/DUMMY.svg" alt="Étape 4">
                 <h3 data-translate-key="step4_title">Étape 4</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sedi do eiusmod tempor incididunt ut labore.</p>
